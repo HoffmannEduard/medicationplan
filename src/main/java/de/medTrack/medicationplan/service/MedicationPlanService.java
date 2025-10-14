@@ -31,7 +31,6 @@ public class MedicationPlanService {
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new IllegalArgumentException("Patient not found"));
 
-        //Medikament ggf. speichern
         MedicationPlan plan = patient.getMedicationPlan();
         plan.getMedications().add(medication);
 
