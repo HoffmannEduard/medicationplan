@@ -1,14 +1,18 @@
-# 1 Basis-Image mit Java 21
-FROM eclipse-temurin:21-jdk-alpine
+# 1 Build
+FROM gradle:8.10-jdk21-alpine AS build
 
-# 2 Arbeitsverzeichnis im Container
 WORKDIR /app
 
-# 3 Spring Boot Jar ins Image kopieren
-COPY build/libs/*.jar app.jar
+COPY . .
 
-# 4 Port 8080 exportieren
+# Projekt bauen
+RUN gradle clean build --no-daemon
+
+# 2 Runtime
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar app.jar
+
 EXPOSE 8080
-
-# 5 Startbefehl für die App
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
