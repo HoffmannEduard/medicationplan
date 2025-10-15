@@ -1,5 +1,6 @@
 package de.medTrack.medicationplan.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class MedicationPlan {
 
     @OneToOne
     @JoinColumn(name = "patient_id")
+    @JsonBackReference
     private Patient patient;
 
     @ManyToMany(fetch = FetchType.EAGER)

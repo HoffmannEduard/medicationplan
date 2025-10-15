@@ -1,5 +1,6 @@
 package de.medTrack.medicationplan.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import lombok.*;
@@ -27,6 +28,7 @@ public class Patient {
     private Gender gender;
 
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private MedicationPlan medicationPlan;
 
     public enum Gender {
