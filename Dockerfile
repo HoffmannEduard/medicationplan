@@ -5,7 +5,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # 3 Spring Boot Jar ins Image kopieren
-COPY build.libs/*.jar app.jar
+COPY build/libs/*.jar app.jar
 
 # 4 Port 8080 exportieren
 EXPOSE 8080
