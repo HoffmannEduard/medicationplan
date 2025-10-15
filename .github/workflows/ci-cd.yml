@@ -26,10 +26,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
 
-      # test
-      - name: Run unit tests
-        run: ./gradlew test --no-daemon
-
   # docker
   docker-build:
     needs: build
