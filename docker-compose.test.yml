@@ -1,0 +1,11 @@
+services:
+  app:
+    image: ${DOCKERHUB_USER}/medicationplan:${IMAGE_TAG}
+    ports:
+      - "8080:8080"
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 5s
+      retries: 3
+      timeout: 3s
