@@ -56,3 +56,15 @@ jacocoTestReport {
         html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
     }
 }
+
+sonar {
+    properties {
+        property "sonar.projectKey", "HoffmannEduard_medicationplan"
+        property "sonar.organization", "hoffmanneduard"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportPaths", "build/test-results/test"
+        property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
+    }
+}
