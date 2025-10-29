@@ -33,10 +33,9 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.organization=hoffmanneduard
-            -Dsonar.projectKey=medicationplan
+            -Dsonar.organization=medicationplan
+            -Dsonar.projectKey=hoffmanneduard
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.branch.name=develop
             -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/test/jacocoTestReport.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
