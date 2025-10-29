@@ -34,7 +34,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=HoffmannEduard
-            -Dsonar.projectKey=hoffmanneduard
+            -Dsonar.projectKey=HoffmannEduard_medicationplan
             -Dsonar.branch.name=main
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.coverage.jacoco.xmlReportPaths=build/reports/jacoco/test/jacocoTestReport.xml
