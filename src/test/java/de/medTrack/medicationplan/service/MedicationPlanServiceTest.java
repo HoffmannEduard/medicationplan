@@ -62,9 +62,7 @@ class MedicationPlanServiceTest {
                 .build();
         medicationRepository.save(med1);
         medicationRepository.save(med2);
-
     }
-
     @Test
     void testAddMedicationToPatientPlan() {
         MedicationPlan plan = medicationPlanService.addMedicationToPatientPlan(patient.getId(), med1);
