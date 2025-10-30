@@ -3,6 +3,7 @@ plugins {
     id 'jacoco'
 	id 'org.springframework.boot' version '3.5.6'
 	id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.sonarqube' version '5.1.0.4882'
 }
 
 group = 'de.medTrack'
@@ -43,6 +44,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
@@ -52,5 +54,17 @@ jacocoTestReport {
         csv.required.set(false)
         html.required.set(true)
         html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+    }
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "HoffmannEduard_medicationplan"
+        property "sonar.organization", "hoffmanneduard"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportPaths", "build/test-results/test"
+        property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
     }
 }
